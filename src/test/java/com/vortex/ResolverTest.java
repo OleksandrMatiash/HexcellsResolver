@@ -19,6 +19,19 @@ public class ResolverTest {
     @Test
     public void getNearestCells() {
         Point p = new Point(2, 3);
+//        List<Cell> origCells = asList(
+//                new Cell(0, 1, UNKNOWN),
+//                new Cell(0, 3, UNKNOWN),
+//                new Cell(1, 0, UNKNOWN),
+//                new Cell(1, 4, UNKNOWN),
+//                new Cell(1, 6, UNKNOWN),
+//                new Cell(2, 1, UNKNOWN),
+//                new Cell(2, 5, UNKNOWN),
+//                new Cell(3, 2, UNKNOWN),
+//                new Cell(3, 4, UNKNOWN),
+//                new Cell(0, 5, OPENED, new NumValue(IN_A_ROW, 2)),
+//                new Cell(2, 3, OPENED, new NumValue(IN_A_ROW, 3))
+//        );
         List<Cell> cells = asList(
                 new Cell(0, 1, UNKNOWN),
                 new Cell(0, 3, UNKNOWN),
@@ -29,11 +42,11 @@ public class ResolverTest {
                 new Cell(2, 5, UNKNOWN),
                 new Cell(3, 2, UNKNOWN),
                 new Cell(3, 4, UNKNOWN),
-                new Cell(0, 5, OPENED, new NumValue(IN_A_ROW, 2)),
-                new Cell(2, 3, OPENED, new NumValue(IN_A_ROW, 3))
+                new Cell(0, 5, OPENED, new NumValue(SIMPLE_VALUE, 2)),
+                new Cell(2, 3, OPENED, new NumValue(SIMPLE_VALUE, 3))
         );
         Resolver r = new Resolver();
-        r.getNearestCells(p, r.convertToMap(cells)).forEach(System.out::println);
+        r.resolve(cells, 4);
 
     }
 }
